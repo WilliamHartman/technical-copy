@@ -16,9 +16,9 @@ Logixboard's offering has grown into being the primary communication hub between
 
 ## Assignment
 ---
-Prior to the interview, we ask that you review the code in the TBD PR and leave any feedback, or comments, as if you were reviewing it for a teammate prior to merging.
+Prior to the interview, we will provide a pull request with a forked branch of our assessment that we are asking you to review. Please leave any feedback, or comments, as if you were reviewing the code for a teammate. We will discuss your review at the beginning of our pairing time during the interview so come prepared to speak on what you called out. This should take no more than 90 minutes. If it takes you significantly longer than that, let us know so we can adjust accordingly!
 
-During our time together, we will provide you with several prompts on which to extend the code in the PR.
+After the review with the team, we will provide you with several prompts on which to extend the code from the PR. If you find additional points of feedback, or comment, as you code we encourage you to call it out in real-time. As the pairing portion is only expected to take about 45 minutes, we don't expect you to address any issues found in the review, rather the focus will be on executing the given prompts. 
 
 ## Setup
 ---
@@ -28,6 +28,8 @@ If you don't have experience with any of those languages - don't worry! Our team
 scaffolding for this project in a way that should be easy for any developer to pick up, though if you have any questions please ask!
 
 ### Backend
+Prior to the interview, please ensure you are able to get the application setup and running without issue.
+
 To install dependencies:
 ```
 npm install
