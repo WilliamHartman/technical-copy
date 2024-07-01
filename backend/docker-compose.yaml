@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16.3-alpine
+    container_name: lxb_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: badpass
+      POSTGRES_DB: lxb_technical_assessment
+    ports:
+      - "5438:5432"
