@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
 import { WidgetData } from '../data/WidgetData';

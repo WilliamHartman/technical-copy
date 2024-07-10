@@ -1,4 +1,5 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
 import { ProductData } from '../data/Product';

@@ -12,4 +12,4 @@ export type Order = {
 
 export type OrderData = {
     orders: Order[]
-} | any;
+} | any
