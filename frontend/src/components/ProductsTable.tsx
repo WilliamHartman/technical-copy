@@ -1,7 +1,7 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
-import {ProductData} from '../data/Product'
+import { ProductData } from '../data/Product';
 
 const useStyles = makeStyles()({
     grid: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles()({
 })
 
 function ProductsTable(products: ProductData) {
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     const columns: GridColDef[] = [
         {
@@ -36,17 +36,17 @@ function ProductsTable(products: ProductData) {
         },
     ]
 
-	return (
-		<DataGrid
-			className={classes.grid}
-			rows={products?.products}
-			columns={columns}
+    return (
+        <DataGrid
+            className={classes.grid}
+            rows={products?.products}
+            columns={columns}
             initialState={{
                 pagination: { paginationModel: { pageSize: 25 } },
-              }}
+            }}
             pageSizeOptions={[5, 10, 25]}
-		/>
-	)
+        />
+    )
 
 }
 

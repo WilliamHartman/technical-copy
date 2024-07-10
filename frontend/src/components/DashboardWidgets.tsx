@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
-import {WidgetData} from '../data/WidgetData'
+import { WidgetData } from '../data/WidgetData';
 
 const useStyles = makeStyles()({
     card: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles()({
 })
 
 function DashboardWidgets(widgetData: WidgetData) {
-    const { classes } = useStyles();
+    const { classes } = useStyles()
     const { widgetData: data }: WidgetData['widgetData'] = widgetData
 
     return (

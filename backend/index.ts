@@ -1,19 +1,19 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { mapShipments } from './mapping/mapShipments';
 import express from 'express';
 import { config as queryConfig } from './database/dbConfig';
+import { mapShipments } from './mapping/mapShipments';
 
-const PORT = process.env.PORT || 3001;
-const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 3001
+const app = express()
+app.use(cors())
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);
-});
+})
 
 app.get('/orders', function (req, res) {
     queryConfig.query(
@@ -31,8 +31,8 @@ app.get('/orders', function (req, res) {
             if (error) throw error
             return res.status(200).json(results.rows)
         }
-    );
-});
+    )
+})
 
 app.get('/products', function (req, res) {
     queryConfig.query(
@@ -48,8 +48,8 @@ app.get('/products', function (req, res) {
             if (error) throw error
             return res.status(200).json(results.rows)
         }
-    );
-});
+    )
+})
 
 app.get('/outstandingOrderItems', function (req, res) {
     queryConfig.query(
@@ -61,8 +61,8 @@ app.get('/outstandingOrderItems', function (req, res) {
             if (error) throw error
             return res.status(200).json(results.rows[0].sum)
         }
-    );
-});
+    )
+})
 
 app.get('/uniqueProductsOrdered', function (req, res) {
     queryConfig.query(
@@ -73,8 +73,8 @@ app.get('/uniqueProductsOrdered', function (req, res) {
             if (error) throw error
             return res.status(200).json(results.rows[0].count)
         }
-    );
-});
+    )
+})
 
 app.get('/totalAmountSpent', function (req, res) {
     queryConfig.query(
@@ -86,8 +86,8 @@ app.get('/totalAmountSpent', function (req, res) {
             if (error) throw error
             return res.status(200).json(results.rows[0].sum)
         }
-    );
-});
+    )
+})
 
 app.get('/lateDeliveries', function (req, res) {
     queryConfig.query(
@@ -98,18 +98,17 @@ app.get('/lateDeliveries', function (req, res) {
             if (error) throw error
             return res.status(200).json(results.rows[0].count)
         }
-    );
-});
+    )
+})
 
 app.post('/shipments', async function (req, res) {
-
     const data = mapShipments(req.body)
     const shipmentQuery = {
         text: 'INSERT INTO shipments (external_id, shipment_type, origin_port, destination_port, total_pieces, total_weight, total_volume, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
         values: [...Object.values(data)],
-    };
+    }
 
-    const shipmentId = (await queryConfig.query(shipmentQuery)).rows[0].id;
+    const shipmentId = (await queryConfig.query(shipmentQuery)).rows[0].id
 
     return res.status(200).json({
         id: shipmentId,

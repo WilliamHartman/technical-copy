@@ -1,17 +1,19 @@
+import axios from 'axios';
 import { format } from 'date-fns';
-import { Order, OrderStatus, OrderStatusReadable } from './Order';
+import { Order, OrderStatusReadable } from './Order';
 
 export const fetchData = (endpoint: string) => {
-    return fetch(`http://localhost:3001/${endpoint}`)
-        .then(res => res.json())
-        .then((data) => { return { status: 'SUCCESS', data: data } })
+    return axios.get(`http://localhost:3001/${endpoint}`)
+        .then((res) => {
+            return { status: 'SUCCESS', data: res.data }
+        })
         .catch((err) => {
             return {
                 status: 'ERROR',
                 error_message: err.message
             }
-        });
-};
+        })
+}
 
 const adjustDateString = (dateString: string): string => {
     const date = new Date(dateString).getTime()

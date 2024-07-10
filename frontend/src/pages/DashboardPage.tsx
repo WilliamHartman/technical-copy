@@ -10,7 +10,7 @@ import ProductsTable from '../components/ProductsTable';
 import { OrderData } from '../data/Order';
 import { ProductData } from '../data/Product';
 import { WidgetData } from '../data/WidgetData';
-import { fetchData, adjustOrderData } from '../data/fetch-data';
+import { adjustOrderData, fetchData } from '../data/fetch-data';
 
 const useStyles = makeStyles()({
 	toggleGroup: {
@@ -19,26 +19,26 @@ const useStyles = makeStyles()({
 })
 
 function DashboardPage() {
-	const { classes } = useStyles();
+	const { classes } = useStyles()
 
 	const [ordersData, setOrdersData]: OrderData = useState({})
 	const [productsData, setProductsData]: ProductData = useState({})
 	const [widgetData, setWidgetData]: WidgetData = useState({
 		widgetData: {
-			outstandingOrderItems: 0, 
-			uniqueProductsOrdered: 0, 
-			totalAmountSpent: '', 
+			outstandingOrderItems: 0,
+			uniqueProductsOrdered: 0,
+			totalAmountSpent: '',
 			lateDeliveries: 0
 		}
 	})
-	const [toggle, setToggle] = useState('orders');
+	const [toggle, setToggle] = useState('orders')
 
 	const handleChange = (
 		event: React.MouseEvent<HTMLElement>,
 		selection: string,
 	) => {
-		setToggle(selection);
-	};
+		setToggle(selection)
+	}
 
 	useEffect(() => {
 		// Dashboard Tables
@@ -46,33 +46,33 @@ function DashboardPage() {
 			.then((dataResponse: any) => {
 				const orders = adjustOrderData(dataResponse.data)
 				setOrdersData(orders)
-			});
+			})
 		fetchData('products')
 			.then((dataResponse: any) => {
 				setProductsData(dataResponse.data)
-			});
+			})
 
 		// Dashboard Widgets
 		fetchData('outstandingOrderItems')
 			.then((dataResponse: any) => {
 				widgetData.widgetData.outstandingOrderItems = dataResponse.data
 				setWidgetData({ ...widgetData })
-			});
+			})
 		fetchData('uniqueProductsOrdered')
 			.then((dataResponse: any) => {
 				widgetData.widgetData.uniqueProductsOrdered = dataResponse.data
 				setWidgetData({ ...widgetData })
-			});
+			})
 		fetchData('totalAmountSpent')
 			.then((dataResponse: any) => {
 				widgetData.widgetData.totalAmountSpent = dataResponse.data
 				setWidgetData({ ...widgetData })
-			});
+			})
 		fetchData('lateDeliveries')
 			.then((dataResponse: any) => {
 				widgetData.widgetData.lateDeliveries = dataResponse.data
 				setWidgetData({ ...widgetData })
-			});
+			})
 	}, [toggle])
 
 	return (

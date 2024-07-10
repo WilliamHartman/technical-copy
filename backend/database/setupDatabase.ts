@@ -4,20 +4,20 @@ const { client: setupClient, dbName: setupName } = require(path.join(__dirname, 
 export { };
 
 async function setupDatabase() {
-  await setupClient.connect();
+  await setupClient.connect()
 
   const response = await setupClient.query(
     `SELECT datname FROM pg_catalog.pg_database WHERE datname = '${setupName}'`
-  );
+  )
 
   if (response.rowCount === 0) {
-    await setupClient.query(`CREATE DATABASE "${setupName}";`);
-    console.log(`Successfully created database ${setupName}.`);
+    await setupClient.query(`CREATE DATABASE "${setupName}";`)
+    console.log(`Successfully created database ${setupName}.`)
   } else {
-    console.log(`${setupName} already exists.`);
+    console.log(`${setupName} already exists.`)
   }
 
-  await setupClient.end();
+  await setupClient.end()
 }
 
-setupDatabase();
+setupDatabase()

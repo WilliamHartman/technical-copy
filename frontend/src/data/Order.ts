@@ -8,7 +8,7 @@ export type Order = {
     order_status: string,
     estimated_time_arrival: string,
     actual_time_arrival: string,
-};
+}
 
 export type OrderData = {
     orders: Order[]

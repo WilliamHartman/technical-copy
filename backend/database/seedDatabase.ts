@@ -4,11 +4,11 @@ const { config: seedClient } = require(path.join(__dirname, 'dbConfig.ts'));
 export { };
 
 async function seedDatabase() {
-    const client = await seedClient.connect();
+    const client = await seedClient.connect()
 
     await client.query(
         `CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public`
-    );
+    )
 
     await client.query(
         `CREATE TABLE IF NOT EXISTS orders (
@@ -27,7 +27,7 @@ async function seedDatabase() {
             updated_at timestamp with time zone DEFAULT now() NOT NULL,
             PRIMARY KEY(id)
         )`
-    );
+    )
 
     await client.query(
         `CREATE TABLE IF NOT EXISTS products (
@@ -39,7 +39,7 @@ async function seedDatabase() {
             updated_at timestamp with time zone DEFAULT now() NOT NULL,
             PRIMARY KEY(id)
         )`
-    );
+    )
 
     await client.query(
         `CREATE TABLE IF NOT EXISTS order_line_items (
@@ -56,7 +56,7 @@ async function seedDatabase() {
             CONSTRAINT order_line_items_product_id_fkey FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
             PRIMARY KEY(id)
         )`
-    );
+    )
 
     await client.query(
         `CREATE TABLE IF NOT EXISTS locations (
@@ -69,7 +69,7 @@ async function seedDatabase() {
             updated_at timestamp with time zone DEFAULT now() NOT NULL,
             PRIMARY KEY(id)
         )`
-    );
+    )
 
     await client.query(
         `CREATE TABLE IF NOT EXISTS shipments (
@@ -86,7 +86,7 @@ async function seedDatabase() {
             updated_at timestamp with time zone DEFAULT now() NOT NULL,
             PRIMARY KEY(id)
         )`
-    );
+    )
 
     await client.query(
         `INSERT INTO orders(id, order_number, order_date, order_status, total_quantity, total_quantity_invoiced, total_quantity_received, total_quantity_remaining, estimated_time_arrival, actual_time_arrival) VALUES
@@ -99,7 +99,7 @@ async function seedDatabase() {
             ('feb5c20e-0ab8-4d36-91f0-073e4409511f', 'CFL-12345', '2024-05-12', 'DELIVERED', 6, 6, 4, 2, '2024-06-01 10:15:00', '2024-06-07 15:15:00'),
             ('b8b97b6c-891c-42cf-9309-5bd84e7e626d', 'CFL-23456', '2024-05-19', 'IN_PROGRESS', 12, 10, 0, 12, '2024-06-21 13:30:00', NULL),
             ('f5a4d949-e2ca-407a-8b0f-6e8399ec325b', 'CFL-34567', '2024-07-01', 'DRAFT', 9, 0, 0, 0, NULL, NULL)`
-    );
+    )
 
     await client.query(
         `INSERT INTO products(id, sku, product_description, is_active) VALUES
@@ -118,7 +118,7 @@ async function seedDatabase() {
             ('06f934fe-ee8e-4c9c-96db-cbb234499bfb',  'CFL345', 'An awesome product we can ship', TRUE),
             ('6c9cc622-66e8-4cbb-b83b-f992955e874e',  'CFL456', 'An awesome product we can ship', TRUE),
             ('b5ae2b61-073f-4fff-bc42-76b9c90ba21a',  'CFL567', 'An awesome product we can ship', TRUE)`
-    );
+    )
 
     await client.query(
         `INSERT INTO order_line_items(order_id, product_id, line_number, quantity, quantity_invoiced, quantity_received, quantity_remaining, price) VALUES
@@ -140,11 +140,11 @@ async function seedDatabase() {
             ('6ad8f891-59a3-4d6b-9333-4ee1f2cdf82c', '06f934fe-ee8e-4c9c-96db-cbb234499bfb', 2, 2, 0, 0, 2, 7.25),
             ('52a69425-0e8f-464f-bb98-043bd8611735', '6c9cc622-66e8-4cbb-b83b-f992955e874e', 1, 6, 0, 0, 6, 12.50),
             ('52a69425-0e8f-464f-bb98-043bd8611735', 'b5ae2b61-073f-4fff-bc42-76b9c90ba21a', 2, 3, 0, 0, 3, 17.50)`
-    );
+    )
 
-    console.log('Successfully seeded database');
+    console.log('Successfully seeded database')
 
-    await client.release();
+    await client.release()
 }
 
-seedDatabase();
+seedDatabase()

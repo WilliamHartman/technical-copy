@@ -6,9 +6,9 @@ export function mapShipments(rawData: ShipmentRawData): Shipment {
         shipment_type: rawData.shipmentType,
         origin_port: rawData.originPortCode,
         destination_port: rawData.destinationPortCode,
-        total_pieces: rawData.totalPieces,
+        total_pieces: parseInt(rawData.totalPieces),
         total_weight: rawData.totalWeight,
         total_volume: rawData.totalVolume,
         notes: rawData.notes || undefined,
-    };
+    }
 }

@@ -1,10 +1,10 @@
-import '../App.css';
+import { TextField } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useForm } from "react-hook-form";
-import { TextField } from "@mui/material";
+import '../App.css';
 
 export function ShipmentForm() {
-	const { register} = useForm();
+	const { register } = useForm()
 
 	return (
 		<form>

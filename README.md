@@ -1,5 +1,3 @@
-This is a test change
-
 # Logixboard Fullstack Engineering Technical Assessment
 
 ---
@@ -32,7 +30,7 @@ During our time together, we will provide you with several prompts on which to e
 
 ---
 
-This app was built using the React (v18), Node.js (v16) and Typescript languages, along with a PostgreSQL database wrapped in a Docker container. If you don't already have Docker installed on your computer, you can follow the commands in their documentation based on your operating system: https://docs.docker.com/engine/install/.
+This app was built using the React (v18), Node.js (v16) and Typescript languages, along with a PostgreSQL database wrapped in a Docker container. If you don't already have Docker installed on your computer, you can follow the commands in their documentation based on your operating system: https://docs.docker.com/engine/install/ and, using Homebrew, run `brew install docker-compose`.
 
 If you don't have experience with any of those languages - don't worry! Our team will be there to help you with any nuances, though we do recommend getting a base level of familiarity prior to the interview as this is the stack we use at Logixboard and we expect any incoming teammates to be capable of working in them, or learning how to work in them. We have tried to build the
 scaffolding for this project in a way that should be easy for any developer to pick up, though if you have any questions please ask!
