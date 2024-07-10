@@ -1,41 +1,41 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import '../App.css';
 import { ProductData } from '../data/Product';
-import React from 'react';
 
 const useStyles = makeStyles()({
     grid: {
         marginInline: 16,
-        height: '100%',
+        height: '100%'
     },
     loader: {
         margin: 'auto',
         width: 'fit-content',
-        marginTop: 200,
-    },
-});
+        marginTop: 200
+    }
+})
 
 function ProductsTable(products: ProductData) {
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     const columns: GridColDef[] = [
         {
             field: 'sku',
             headerName: 'SKU',
-            width: 300,
+            width: 300
         },
         {
             field: 'product_description',
             headerName: 'Description',
-            width: 800,
+            width: 800
         },
         {
             field: 'is_active',
             headerName: 'Is Active?',
-            width: 300,
+            width: 300
         },
-    ];
+    ]
 
     return (
         <DataGrid
@@ -47,7 +47,8 @@ function ProductsTable(products: ProductData) {
             }}
             pageSizeOptions={[5, 10, 25]}
         />
-    );
+    )
+
 }
 
 export default ProductsTable;

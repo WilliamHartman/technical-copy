@@ -1,21 +1,21 @@
 import { Tab, Tabs, Toolbar } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
-import { Link, useLocation } from 'react-router-dom'
 import logo from '../logo-trimmed_transparent-background.png';
 import { AppRoute } from '../routes';
 
 const useStyles = makeStyles()(() => {
-	return {
-		logoLink: {
-			paddingInlineEnd: 12,
-			paddingBlock: 6
-		},
-		navTab: {
-			textTransform: 'none',
-			fontWeight: 800
-		}
-	};
-  });
+    return {
+        logoLink: {
+            paddingInlineEnd: 12,
+            paddingBlock: 6
+        },
+        navTab: {
+            textTransform: 'none',
+            fontWeight: 800
+        }
+    }
+})
 
 type NavTabDefinition = {
     route: AppRoute,
