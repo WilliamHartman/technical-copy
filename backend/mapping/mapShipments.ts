@@ -1,6 +1,15 @@
 import { Shipment, ShipmentRawData } from '../models/Shipment';
 
 export function mapShipments(rawData: ShipmentRawData): Shipment {
+    if (!rawData) {
+        throw new Error('Invalid raw shipment data');
+    }
+
+    const totalPieces = parseInt(rawData.totalPieces);
+    if (isNaN(totalPieces)) {
+        throw new Error('Invalid totalPieces value');
+    }
+
     return {
         external_id: rawData.shipmentID,
         shipment_type: rawData.shipmentType,

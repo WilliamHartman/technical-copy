@@ -75,6 +75,8 @@ function DashboardPage() {
 			})
 	}, [toggle])
 
+	console.log(ordersData)
+
 	return (
 		<div>
 			<h1>Dashboard</h1>
